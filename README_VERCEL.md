@@ -32,3 +32,6 @@ with your real FastAPI domain.
   - `/crawl/musinsa`
   - `/crawl/zigzag`
 - Make sure your backend allows CORS from your Vercel domain.
+
+
+Fix applied: static assets are served from /public so Vite copies js/css/assets into dist during build.
