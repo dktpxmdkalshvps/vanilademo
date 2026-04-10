@@ -35,3 +35,6 @@ with your real FastAPI domain.
 
 
 Fix applied: static assets are served from /public so Vite copies js/css/assets into dist during build.
+
+
+이미지 캐릭터/성별 선택 이미지는 Imgur 원격 URL을 사용하도록 설정되어 있습니다. retro_m은 HTTPS로 정규화했습니다.

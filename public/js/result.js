@@ -2,6 +2,37 @@
   const utils = window.MapsiUtils;
   const api = window.MapsiApi || {};
 
+  const REMOTE_IMAGE_MAP = {
+    female_select: 'https://i.imgur.com/sLXQIvy.png',
+    male_select: 'https://i.imgur.com/8SPRMBE.png',
+    casual_m: 'https://i.imgur.com/EQ8Y06h.jpeg',
+    casual_w: 'https://i.imgur.com/HSOARho.jpeg',
+    feminine_m: 'https://i.imgur.com/J1xWPhx.jpeg',
+    feminine_w: 'https://i.imgur.com/LwLYa4N.jpeg',
+    hipster_punk_m: 'https://i.imgur.com/EUekgYA.jpeg',
+    hipster_punk_w: 'https://i.imgur.com/s7duNVg.jpeg',
+    mannish_m: 'https://i.imgur.com/6m054WN.jpeg',
+    mannish_w: 'https://i.imgur.com/S9jKn1b.jpeg',
+    modern_minimal_m: 'https://i.imgur.com/5Su6Z2D.jpeg',
+    modern_minimal_w: 'https://i.imgur.com/TV9EjpC.jpeg',
+    retro_m: 'https://i.imgur.com/u9YizKs.jpeg',
+    retro_w: 'https://i.imgur.com/hL2gpLu.jpeg',
+    romantic_m: 'https://i.imgur.com/uqtm44U.jpeg',
+    romantic_w: 'https://i.imgur.com/l2GVLu6.jpeg',
+    sophisticated_m: 'https://i.imgur.com/DmPa1bh.jpeg',
+    sophisticated_w: 'https://i.imgur.com/JjoSu70.jpeg',
+    sporty_m: 'https://i.imgur.com/4INW6FI.jpeg',
+    sporty_w: 'https://i.imgur.com/pxMUuAn.jpeg',
+    street_m: 'https://i.imgur.com/80jd1Dd.jpeg',
+    street_w: 'https://i.imgur.com/hAYFS6W.jpeg'
+  };
+
+  function getPersonaImageUrl(imgFile, isFemale) {
+    const key = imgFile + (isFemale ? '_w' : '_m');
+    return REMOTE_IMAGE_MAP[key] || '/assets/images/' + key + '.png';
+  }
+
+
   const COLOR_GUIDE = {
     '봄 라이트': { ms: ['화이트', '아이보리', '라이트핑크', '피치', '코럴', '옐로우'], zz: ['화이트', '아이보리', '라이트핑크', '피치'] },
     '봄 브라이트': { ms: ['핑크', '오렌지', '레드', '민트', '그린', '옐로우'], zz: ['핑크', '오렌지', '레드', '민트'] },
@@ -137,7 +168,7 @@
 
     utils.$('#result-badge').textContent = '나의 맵시TI: ' + persona.icon + ' ' + state.resultType;
     var imgSuffix = isFemale ? '_w' : '_m';
-    var imgSrc = 'assets/images/' + persona.imgFile + imgSuffix + '.png';
+    var imgSrc = getPersonaImageUrl(persona.imgFile, isFemale);
     utils.$('#char-img').innerHTML = '<img src="' + imgSrc + '" alt="' + utils.escapeHtml(state.resultType) + '" style="width:100%;height:100%;object-fit:contain;border-radius:12px;">';
     utils.$('#result-char').style.background = persona.bg;
     utils.$('#result-title').textContent = persona.icon + ' ' + state.resultType;
